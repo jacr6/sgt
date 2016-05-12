@@ -1,0 +1,156 @@
+{% include "header2.html" %}
+{% load staticfiles %}  
+{% load widget_tweaks %}
+
+{% include "dropdownuser.html" %}
+{% include "navsidebar.html" %}
+
+    
+        <!-- Page Content -->
+        <div id="page-wrapper">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <h1 class="page-header">SiteSurveys</h1>
+                        <div class="col-lg-6">
+<!-- Station -->
+{% if message %}
+ <b>{$ message $}</b>
+<br>
+ {% endif %}
+ {% if station_list %}
+<form role="form" action="" method="get" accept-charset="utf-8">
+<select class="form-control" name="estacion_dd" id="estacion_dd">
+<option value="">Select a station</option>
+{% for estacion in station_list %}
+<option value="{{ estacion.cod_station }}">{{ estacion.nombre }}</option>
+{% endfor %}
+</select>
+
+{% else %}
+     <p>No estacion found.</p>
+ {% endif %}
+ <br>
+ 
+<!-- PO -->
+ {% if po_list %}
+<select class="form-control" name="po_dd" id="po_dd">
+<option value="">Select a po</option>
+{% for po in po_list %}
+<option value="{{ po.cod_po }}">{{ po.num_tipo }}</option>
+{% endfor %}
+</select>
+
+{% else %}
+     <p>No po found.</p>
+ {% endif %}
+<br>
+<!-- Contratista -->
+ {% if contratista_list %}
+<select class="form-control" name="contratista_dd" id="contratista_dd">
+<option value="">Select a contractor</option>
+{% for contratista in contratista_list %}
+<option value="{{ contratista.cod_station }}">{{ contratista.nombre }}</option>
+{% endfor %}
+</select>
+
+
+{% else %}
+     <p>No contratista found.</p>
+ {% endif %}
+<br>
+
+       <h1 class="page-header">Images</h1>
+    <!-- Example: nv-file-drop="" uploader="{Object}" options="{Object}" filters="{String}" -->
+    <body ng-controller="AppController" nv-file-drop="" uploader="uploader">
+
+        <div class="container">
+
+
+
+            <div class="row">
+
+
+
+                <!-- /.row -->
+            </div>
+            <!-- /.container-fluid -->
+
+
+
+<div class="row">
+ <!-- Example: nv-file-select="" uploader="{Object}" options="{Object}" filters="{String}" -->
+                    <input type="file" nv-file-select="" uploader="uploader" multiple  /><br/>
+                <div class="col-md-3" style="margin-bottom: 40px">
+                    
+                    <p>Queue length: {$ uploader.queue.length $}</p>
+
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th width="50%">Name</th>
+                                <th ng-show="uploader.isHTML5">Size</th>
+                                <th ng-show="uploader.isHTML5">Progress</th>
+                                <th>Status</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat="item in uploader.queue">
+                                <td>
+                                    <strong>{$ item.file.name $}</strong>
+                                    <!-- Image preview -->
+                                    <!--auto height-->
+                                    <!--<div ng-thumb="{ file: item.file, width: 100 }"></div>-->
+                                    <!--auto width-->
+                                    <div ng-show="uploader.isHTML5" ng-thumb="{ file: item._file, height: 100 }"></div>
+                                    <!--fixed width and height -->
+                                    <!--<div ng-thumb="{ file: item.file, width: 100, height: 100 }"></div>-->
+                                </td>
+                                <td ng-show="uploader.isHTML5" nowrap>{$ item.file.size/1024/1024|number:2 $} MB</td>
+                                <td ng-show="uploader.isHTML5">
+                                    <div class="progress" style="margin-bottom: 0;">
+                                        <div class="progress-bar" role="progressbar" ng-style="{ 'width': item.progress + '%' }"></div>
+                                    </div>
+                                </td>
+                                <td class="upbtn text-center">
+                                    <span ng-show="item.isSuccess"><i class="glyphicon glyphicon-ok"></i></span>
+                                    <span ng-show="item.isCancel"><i class="glyphicon glyphicon-ban-circle"></i></span>
+                                    <span ng-show="item.isError"><i class="glyphicon glyphicon-remove"></i></span>
+                                </td>
+                                <td class="upbtn" nowrap>
+                                    <button type="button" class="btn btn-success btn-xs" ng-click="item.upload()" ng-disabled="item.isReady || item.isUploading || item.isSuccess">
+                                        <span class="glyphicon glyphicon-upload"></span> Upload
+                                    </button>
+                                    <button type="button" class="btn btn-warning btn-xs" ng-click="item.cancel()" ng-disabled="!item.isUploading">
+                                        <span class="glyphicon glyphicon-ban-circle"></span> Cancel
+                                    </button>
+                                    <button type="button" class="btn btn-danger btn-xs" ng-click="item.remove()">
+                                        <span class="glyphicon glyphicon-trash"></span> Remove
+                                    </button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <div>
+                        <div>
+   
+
+
+<button type="submit" class="btn btn-default">Submit Button</button>
+</form>
+                          </div> 
+                          <!-- /.col-lg-6 -->
+                      </div>
+                    <!-- /.col-lg-12 -->
+
+                </div>
+        </div>
+        </div>
+        <!-- /#page-wrapper -->
+
+    </div>
+
+    <!-- /#wrapper -->
+{% include "footer3.html" %}

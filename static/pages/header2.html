@@ -1,0 +1,72 @@
+{% load staticfiles %}    
+<!DOCTYPE html>
+<html id="ng-app" ng-app="app"> <!-- id="ng-app" IE<8 -->
+
+    <head>
+        <title>Uploads only images (with canvas preview)</title>
+ <!-- Bootstrap Core CSS -->
+    <link href="{% static 'bower_components/bootstrap/dist/css/bootstrap.min.css'%}" rel="stylesheet">
+    <!-- Timeline CSS -->
+    <link href="/static/css/timeline.css" rel="stylesheet">
+
+    <!-- MetisMenu CSS -->
+    <link href="{% static 'bower_components/metisMenu/dist/metisMenu.min.css'%}" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link href="{% static 'dist/css/sb-admin-2.css'%}" rel="stylesheet">
+
+    <!-- Custom Fonts -->
+    <link href="/static/bower_components/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js'%}"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js'%}"></script>
+    <![endif]-->
+
+    <!-- Morris Charts CSS -->
+    <link href="{% static 'bower_components/morrisjs/morris.css'%}" rel="stylesheet">
+
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+        <!-- Fix for old browsers -->
+        <script src="http://nervgh.github.io/js/es5-shim.min.js"></script>
+        <script src="http://nervgh.github.io/js/es5-sham.min.js"></script>
+        <script src="http://code.jquery.com/jquery-1.8.3.min.js"></script>
+        <script src="/static/js/console-sham.js"></script>
+
+
+        <!--<script src="../bower_components/angular/angular.js"></script>-->
+        <script src="http://code.angularjs.org/1.1.5/angular.min.js"></script>
+        <script src="/static/bower_components/angular-file-upload/dist/angular-file-upload.min.js"></script>
+        <script src="/static/js/controllers.js"></script>
+
+        <!--thumbnails for images-->
+        <script src="/static/js/directives.js"></script>
+
+        <style>
+            .my-drop-zone { border: dotted 3px lightgray; }
+            .nv-file-over { border: dotted 3px red; } /* Default class applied to drop zones on over */
+            .another-file-over-class { border: dotted 3px green; }
+
+          
+
+            canvas {
+                background-color: #f3f3f3;
+                -webkit-box-shadow: 3px 3px 3px 0 #e3e3e3;
+                -moz-box-shadow: 3px 3px 3px 0 #e3e3e3;
+                box-shadow: 3px 3px 3px 0 #e3e3e3;
+                border: 1px solid #c3c3c3;
+                height: 100px;
+                margin: 6px 0 0 6px;
+            }
+        </style>
+
+    </head>
