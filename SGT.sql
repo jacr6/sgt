@@ -20,8 +20,8 @@ CREATE TABLE IF NOT EXISTS `Actividade` (
   `cod_actividad` int(11) NOT NULL AUTO_INCREMENT,
   `actividad` varchar(50) DEFAULT NULL,
   `duracion` float DEFAULT NULL,
-  `creado` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `modificado` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `creado` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `modificado` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`cod_actividad`),
   UNIQUE KEY `cod_actividad` (`cod_actividad`)
 ) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8;
@@ -45,8 +45,8 @@ INSERT INTO `Actividade` (`cod_actividad`, `actividad`, `duracion`, `creado`, `m
 CREATE TABLE IF NOT EXISTS `Aprobacione` (
   `cod_ok` int(11) NOT NULL,
   `nombre` varchar(45) DEFAULT NULL,
-  `creado` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `modificado` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `creado` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `modificado` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`cod_ok`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -60,8 +60,8 @@ DELETE FROM `Aprobacione`;
 CREATE TABLE IF NOT EXISTS `Asignacione` (
   `cod_asignacion` int(11) NOT NULL AUTO_INCREMENT,
   `nombre` varchar(45) DEFAULT NULL,
-  `creado` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `modificado` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `creado` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `modificado` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`cod_asignacion`),
   UNIQUE KEY `cod_asignacion_UNIQUE` (`cod_asignacion`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -77,8 +77,8 @@ CREATE TABLE IF NOT EXISTS `Atp` (
   `cod_atp` int(11) NOT NULL AUTO_INCREMENT,
   `cod_po` int(11) DEFAULT NULL,
   `cod_station` int(11) DEFAULT NULL,
-  `creado` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `modificado` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `creado` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `modificado` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`cod_atp`),
   UNIQUE KEY `cod_atp_UNIQUE` (`cod_atp`),
   KEY `FK_Atps_Pos` (`cod_po`),
@@ -327,8 +327,8 @@ CREATE TABLE IF NOT EXISTS `Ciudade` (
   `provincia` varchar(45) DEFAULT NULL,
   `region` int(11) DEFAULT NULL,
   `nombre` varchar(45) DEFAULT NULL,
-  `creado` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `modificado` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `creado` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `modificado` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`cod_ciudad`),
   KEY `FK_Ciudades_Regiones` (`region`),
   CONSTRAINT `FK_Ciudades_Regiones` FOREIGN KEY (`region`) REFERENCES `Regione` (`cod_region`)
@@ -347,8 +347,8 @@ CREATE TABLE IF NOT EXISTS `Contratista` (
   `cod_contratista` int(11) NOT NULL AUTO_INCREMENT,
   `nombre` varchar(45) DEFAULT NULL,
   `region` int(11) DEFAULT NULL,
-  `creado` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `modificado` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `creado` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `modificado` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`cod_contratista`),
   UNIQUE KEY `codigo_UNIQUE` (`cod_contratista`),
   KEY `region_idx` (`region`),
@@ -370,8 +370,8 @@ CREATE TABLE IF NOT EXISTS `Diseno` (
   `cod_contratista` int(11) NOT NULL DEFAULT '0',
   `cod_station` int(11) NOT NULL DEFAULT '0',
   `nombre` varchar(45) DEFAULT NULL,
-  `creado` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `modificado` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `creado` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `modificado` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`cod_diseno`),
   UNIQUE KEY `cod_diseño_UNIQUE` (`cod_diseno`),
   KEY `FK_Disenos_Contratistas` (`cod_contratista`),
@@ -593,8 +593,8 @@ INSERT INTO `django_session` (`session_key`, `session_data`, `expire_date`) VALU
 CREATE TABLE IF NOT EXISTS `Entregable` (
   `cod_entregable` int(11) NOT NULL AUTO_INCREMENT,
   `tipo_entregable` varchar(45) DEFAULT NULL,
-  `creado` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `modificado` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `creado` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `modificado` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`cod_entregable`),
   UNIQUE KEY `cod_entregable_UNIQUE` (`cod_entregable`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -610,8 +610,8 @@ CREATE TABLE IF NOT EXISTS `Estacione` (
   `cod_station` int(11) NOT NULL AUTO_INCREMENT,
   `nombre` varchar(45) NOT NULL,
   `ciudad` int(11) NOT NULL,
-  `creado` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `modificado` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `creado` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `modificado` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`cod_station`),
   UNIQUE KEY `cod_estacion_UNIQUE` (`cod_station`),
   KEY `FK_Stations_Ciudades` (`ciudad`),
@@ -631,8 +631,8 @@ INSERT INTO `Estacione` (`cod_station`, `nombre`, `ciudad`, `creado`, `modificad
 CREATE TABLE IF NOT EXISTS `Estado` (
   `cod_estado` int(11) NOT NULL AUTO_INCREMENT,
   `nombre` varchar(50) DEFAULT '0',
-  `creado` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `modificado` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `creado` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `modificado` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`cod_estado`),
   UNIQUE KEY `cod_estado` (`cod_estado`)
 ) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
@@ -656,8 +656,8 @@ CREATE TABLE IF NOT EXISTS `Factura` (
   `referencia` int(11) DEFAULT NULL,
   `monto` float DEFAULT NULL,
   `tipo_factura` int(11) DEFAULT NULL,
-  `creado` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `modificado` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `creado` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `modificado` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`cod_factura`),
   UNIQUE KEY `cod_factura_UNIQUE` (`cod_factura`),
   KEY `tipo_factura_idx` (`tipo_factura`),
@@ -677,8 +677,8 @@ CREATE TABLE IF NOT EXISTS `Implementacione` (
   `cod_po` int(11) DEFAULT NULL,
   `cod_contratista` int(11) DEFAULT NULL,
   `estimado` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `creado` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `modificado` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `creado` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `modificado` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`cod_imp`),
   UNIQUE KEY `cod_imp_UNIQUE` (`cod_imp`),
   KEY `FK_Implementaciones_Contratistas` (`cod_contratista`),
@@ -702,8 +702,8 @@ CREATE TABLE IF NOT EXISTS `Inspeccione` (
   `cod_estado` int(11) DEFAULT NULL,
   `cod_contratista` int(11) NOT NULL,
   `estimada` timestamp NULL DEFAULT NULL,
-  `creado` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `modificado` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `creado` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `modificado` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`cod_srvy`),
   KEY `cod_estacion_idx` (`cod_station`),
   KEY `FK_Surveys_Contratistas` (`cod_contratista`),
@@ -734,8 +734,8 @@ CREATE TABLE IF NOT EXISTS `Operacione` (
   `cod_atp` int(11) DEFAULT NULL,
   `fecha_inicio` date DEFAULT NULL,
   `fecha_fin` date DEFAULT NULL,
-  `creado` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `modificado` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `creado` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `modificado` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`cod_operacion`),
   UNIQUE KEY `cod_operacion_UNIQUE` (`cod_operacion`),
   KEY `cod_contratista_idx` (`cod_contratista`),
@@ -767,8 +767,8 @@ CREATE TABLE IF NOT EXISTS `Operadora` (
   `cod_operadora` int(11) NOT NULL AUTO_INCREMENT,
   `nombre` varchar(45) DEFAULT NULL,
   `direccion` varchar(45) DEFAULT NULL,
-  `creado` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `modificado` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `creado` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `modificado` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`cod_operadora`),
   UNIQUE KEY `cod_operadora_UNIQUE` (`cod_operadora`)
 ) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
@@ -789,8 +789,8 @@ CREATE TABLE IF NOT EXISTS `PO` (
   `cod_station` int(11) DEFAULT NULL,
   `num_tipo` varchar(50) DEFAULT NULL,
   `cod_tipo` int(11) DEFAULT NULL,
-  `creado` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `modificado` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `creado` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `modificado` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`cod_po`),
   UNIQUE KEY `cod_po_UNIQUE` (`cod_po`),
   KEY `FK_PO_tipo_PO` (`cod_tipo`),
@@ -811,8 +811,8 @@ INSERT INTO `PO` (`cod_po`, `cod_station`, `num_tipo`, `cod_tipo`, `creado`, `mo
 CREATE TABLE IF NOT EXISTS `Privilegio` (
   `level` int(11) NOT NULL AUTO_INCREMENT,
   `descripcion` varchar(45) DEFAULT NULL,
-  `creado` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `modificado` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `creado` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `modificado` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`level`),
   UNIQUE KEY `level_UNIQUE` (`level`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -827,8 +827,8 @@ DELETE FROM `Privilegio`;
 CREATE TABLE IF NOT EXISTS `Regione` (
   `cod_region` int(11) NOT NULL AUTO_INCREMENT,
   `region` varchar(50) DEFAULT '0',
-  `creado` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `modificado` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `creado` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `modificado` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`cod_region`),
   UNIQUE KEY `cod_region` (`cod_region`)
 ) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
@@ -848,8 +848,8 @@ INSERT INTO `Regione` (`cod_region`, `region`, `creado`, `modificado`) VALUES
 CREATE TABLE IF NOT EXISTS `Tipo` (
   `cod_tipo` int(11) NOT NULL AUTO_INCREMENT,
   `nombre` varchar(45) DEFAULT NULL,
-  `creado` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `modificado` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `creado` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `modificado` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`cod_tipo`),
   UNIQUE KEY `cod_tipo_UNIQUE` (`cod_tipo`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -864,8 +864,8 @@ DELETE FROM `Tipo`;
 CREATE TABLE IF NOT EXISTS `Tipo_factura` (
   `cod_tipo` int(11) NOT NULL AUTO_INCREMENT,
   `nombre` varchar(45) DEFAULT NULL,
-  `creado` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `modificado` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `creado` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `modificado` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`cod_tipo`),
   UNIQUE KEY `cod_tipo_UNIQUE` (`cod_tipo`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -880,8 +880,8 @@ DELETE FROM `Tipo_factura`;
 CREATE TABLE IF NOT EXISTS `Tipo_PO` (
   `cod_tipo` int(11) NOT NULL,
   `nombre` varchar(50) DEFAULT NULL,
-  `creado` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
-  `modificado` timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `creado` datetime NULL DEFAULT CURRENT_TIMESTAMP,
+  `modificado` datetime NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`cod_tipo`),
   UNIQUE KEY `cod_tipo` (`cod_tipo`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -901,8 +901,8 @@ CREATE TABLE IF NOT EXISTS `Usuario` (
   `username` varchar(45) DEFAULT NULL,
   `password` varchar(45) DEFAULT NULL,
   `level` int(11) DEFAULT NULL,
-  `creado` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `modificado` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `creado` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `modificado` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`cod_usuario`),
   UNIQUE KEY `cod_usuario_UNIQUE` (`cod_usuario`),
   UNIQUE KEY `username_UNIQUE` (`username`),
@@ -920,8 +920,8 @@ DELETE FROM `Usuario`;
 CREATE TABLE IF NOT EXISTS `Vendor` (
   `cod_vendor` int(11) NOT NULL AUTO_INCREMENT,
   `nombre` varchar(45) DEFAULT NULL,
-  `creado` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `modificado` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `creado` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `modificado` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`cod_vendor`)
 ) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
 
