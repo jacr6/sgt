@@ -374,7 +374,7 @@ CREATE TABLE `Implementacione` (
   `cod_station` int(11) DEFAULT NULL,
   `cod_po` int(11) DEFAULT NULL,
   `cod_contratista` int(11) DEFAULT NULL,
-  `estimado` DATETIME NOT NULL DEFAULT NULL,
+  `estimado` DATETIME  NULL DEFAULT NULL,
   `creado` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `modificado` datetime NULL DEFAULT NULL ,
   PRIMARY KEY (`cod_imp`),
