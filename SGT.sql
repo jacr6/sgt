@@ -653,7 +653,7 @@ CREATE TABLE `Tipo_PO` (
   `cod_tipo` int(11) NOT NULL,
   `nombre` varchar(50) DEFAULT NULL,
   `creado` TIMESTAMP NULL DEFAULT CURRENT_TIMESTAMP,
-  `modificado` datetime NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `modificado` datetime NULL DEFAULT  NULL,
   PRIMARY KEY (`cod_tipo`),
   UNIQUE KEY `cod_tipo` (`cod_tipo`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
